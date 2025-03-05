@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { PAY_LEVELS } from "@/lib/constants";
 import { FormSchema } from "@/lib/schemas/calculator-schema";
+import { formatDateForForm } from "@/lib/utils";
 import { UseFormReturn } from "react-hook-form";
 
 interface PromotionDetailsFormProps {
@@ -46,9 +47,7 @@ export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />
@@ -95,9 +94,7 @@ export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />
@@ -150,9 +147,7 @@ export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />
@@ -208,9 +203,7 @@ export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />

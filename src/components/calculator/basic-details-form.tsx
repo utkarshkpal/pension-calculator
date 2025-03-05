@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { PAY_LEVELS, getBasicPayOptions } from "@/lib/constants";
 import { FormSchema } from "@/lib/schemas/calculator-schema";
+import { formatDateForForm } from "@/lib/utils";
 import { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
 
@@ -71,9 +72,7 @@ export function BasicDetailsForm({ form }: BasicDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />
@@ -90,9 +89,7 @@ export function BasicDetailsForm({ form }: BasicDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />
@@ -229,9 +226,7 @@ export function BasicDetailsForm({ form }: BasicDetailsFormProps) {
               <FormControl>
                 <DatePicker
                   value={field.value ? new Date(field.value) : undefined}
-                  onChange={(date) =>
-                    field.onChange(date?.toISOString().split("T")[0])
-                  }
+                  onChange={(date) => field.onChange(formatDateForForm(date))}
                 />
               </FormControl>
               <FormMessage />

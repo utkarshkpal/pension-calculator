@@ -7,6 +7,7 @@ Code Style and Structure
 - Prefer iteration and modularization over code duplication.
 - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
 - Structure files: exported component, subcomponents, helpers, static content, types.
+- Use react-day-picker version 9.5.1 for calendar component. Use https://daypicker.dev/ for documentation.
 
 Naming Conventions
 
