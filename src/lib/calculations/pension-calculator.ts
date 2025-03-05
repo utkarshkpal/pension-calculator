@@ -49,6 +49,7 @@ export function calculatePensionBenefits(
 
   // Calculate age at retirement
   const ageAtRetirement = calculateAge(birthDate);
+  console.log(`Age at retirement: ${ageAtRetirement}`);
 
   // Calculate years until retirement
   const today = new Date();

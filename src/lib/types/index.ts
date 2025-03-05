@@ -1,5 +1,5 @@
 export interface UserDetails {
-  name: string;
+  name?: string;
   dateOfBirth: string;
   dateOfJoining: string;
   currentPayLevel: number;

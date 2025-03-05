@@ -55,7 +55,7 @@ export function NPSResults({
           </div>
 
           <div className="flex justify-between">
-            <span className="font-medium">Value in Today's Terms:</span>
+            <span className="font-medium">Value in Today&apos;s Terms:</span>
             <span className="font-semibold">
               ₹{formatCurrency(results.corpusInTodaysTerms)}
             </span>
@@ -70,7 +70,7 @@ export function NPSResults({
 
           <div className="border-t pt-4">
             <Label className="mb-2 block">
-              Percentage to Invest in Annuity (40-100%):{" "}
+              Percentage to Invest in Annuity (40-100%):&nbsp;
               {localSettings.annuityInvestmentPercentage}%
             </Label>
             <Slider

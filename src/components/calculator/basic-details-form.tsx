@@ -17,11 +17,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PAY_LEVELS, getBasicPayOptions } from "@/lib/constants";
+import { FormSchema } from "@/lib/schemas/calculator-schema";
 import { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
 
 interface BasicDetailsFormProps {
-  form: UseFormReturn<any>;
+  form: UseFormReturn<FormSchema>;
 }
 
 export function BasicDetailsForm({ form }: BasicDetailsFormProps) {

@@ -16,10 +16,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PAY_LEVELS } from "@/lib/constants";
+import { FormSchema } from "@/lib/schemas/calculator-schema";
 import { UseFormReturn } from "react-hook-form";
 
 interface PromotionDetailsFormProps {
-  form: UseFormReturn<any>;
+  form: UseFormReturn<FormSchema>;
 }
 
 export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
@@ -261,4 +262,4 @@ export function PromotionDetailsForm({ form }: PromotionDetailsFormProps) {
       </div>
     </div>
   );
-} 
+}

@@ -11,61 +11,21 @@ import {
 import { Form } from "@/components/ui/form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { calculatePensionBenefits } from "@/lib/calculations/pension-calculator";
+import { formSchema, FormSchema } from "@/lib/schemas/calculator-schema";
 import { CalculationResults, PromotionDetails, UserDetails } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { BasicDetailsForm } from "./basic-details-form";
 import { NPSResults } from "./nps-results";
 import { PromotionDetailsForm } from "./promotion-details-form";
 import { UPSResults } from "./ups-results";
 
-const formSchema = z.object({
-  basicDetails: z.object({
-    name: z.string().optional(),
-    dateOfBirth: z.string().min(1, "Date of birth is required"),
-    dateOfJoining: z.string().min(1, "Date of joining is required"),
-    currentPayLevel: z.coerce.number().min(1, "Pay level is required"),
-    currentBasicSalary: z.coerce.number().min(1, "Basic salary is required"),
-    npsCorpusTillDate: z.coerce.number().default(0),
-    expectedRateOfReturn: z.coerce.number().default(8.5),
-    currentDA: z.coerce.number().default(55.0),
-    earlyRetirementDate: z.string().optional(),
-  }),
-  promotionDetails: z.object({
-    firstPromotion: z.object({
-      promotionDate: z.string().optional(),
-      payLevelAfterPromotion: z.coerce.number().optional(),
-    }),
-    secondPromotion: z.object({
-      promotionDate: z.string().optional(),
-      payLevelAfterPromotion: z.coerce.number().optional(),
-    }),
-    thirdPromotion: z.object({
-      promotionDate: z.string().optional(),
-      payLevelAfterPromotion: z.coerce.number().optional(),
-    }),
-    fourthPromotion: z.object({
-      promotionDate: z.string().optional(),
-      payLevelAfterPromotion: z.coerce.number().optional(),
-    }),
-  }),
-  npsSettings: z.object({
-    annuityInvestmentPercentage: z.coerce.number().min(40).max(100).default(40),
-    annuityRoi: z.coerce.number().default(6.0),
-    remainingCorpusRoi: z.coerce.number().default(9.0),
-  }),
-  upsSettings: z.object({
-    expectedRoi: z.coerce.number().default(9.0),
-  }),
-});
-
 export function CalculatorForm() {
   const [results, setResults] = useState<CalculationResults | null>(null);
   const [activeTab, setActiveTab] = useState("basic-details");
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       basicDetails: {
@@ -84,8 +44,12 @@ export function CalculatorForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const userDetails: UserDetails = values.basicDetails;
+  function onSubmit(values: FormSchema) {
+    // Ensure name has a default value if undefined
+    const userDetails: UserDetails = {
+      ...values.basicDetails,
+      name: values.basicDetails.name || "Anonymous User",
+    };
 
     const promotions: PromotionDetails[] = [
       values.promotionDetails.firstPromotion,
