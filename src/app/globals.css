@@ -1,64 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 174.8 83.8% 26.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 174.8 83.8% 26.3%;
+  --background: white;
+  --foreground: #0f172a;
+  --card: white;
+  --card-foreground: #0f172a;
+  --popover: white;
+  --popover-foreground: #0f172a;
+  --primary: #0f766e;
+  --primary-foreground: white;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #1e293b;
+  --destructive: #ef4444;
+  --destructive-foreground: white;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0f766e;
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 174.8 83.8% 26.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 174.8 83.8% 26.3%;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #0f766e;
+  --primary-foreground: white;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --destructive-foreground: white;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #0f766e;
 }
 
 * {
-  border-color: hsl(var(--border));
-  outline-color: hsl(var(--ring) / 0.5);
+  border-color: var(--border);
+  outline-color: var(--ring);
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Fix for transparent backgrounds in UI components */
+.bg-popover,
+[data-slot="select-content"],
+[data-slot="popover-content"],
+.select-content,
+.popover-content {
+  background-color: var(--popover);
+}
+
+.bg-card,
+[data-slot="card"] {
+  background-color: var(--card);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-muted {
+  background-color: var(--muted);
+}
+
+.bg-accent {
+  background-color: var(--accent);
 }
 
 /* Custom hover effects for primary buttons */
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background-color: #14b8a6 !important; /* teal-500 */
+  background-color: #14b8a6; /* teal-500 */
 }
 
 /* Add a subtle teal background to selected items */
@@ -71,14 +101,42 @@ body {
 button[data-variant="default"],
 [data-state="checked"],
 .bg-primary {
-  background-color: #0f766e !important;
-  color: white !important;
+  background-color: #0f766e;
+  color: white;
 }
 
 .text-primary {
-  color: #0f766e !important;
+  color: #0f766e;
 }
 
 .border-primary {
-  border-color: #0f766e !important;
+  border-color: #0f766e;
+}
+
+/* Add hover styles for UI components */
+.bg-primary:hover,
+button[data-variant="default"]:hover,
+[data-state="checked"]:hover,
+.btn-primary:hover {
+  background-color: #14b8a6 !important; /* teal-500 - lighter shade */
+}
+
+/* Add hover styles for dropdown items and other interactive elements */
+[data-radix-select-item]:hover,
+[data-radix-dropdown-item]:hover,
+.select-item:hover,
+.dropdown-item:hover,
+[data-slot="select-item"]:hover,
+[data-slot="dropdown-item"]:hover {
+  background-color: rgba(20, 184, 166, 0.1); /* teal-500 with opacity */
+  color: #0f766e; /* teal-700 */
+}
+
+/* Add focus styles */
+.bg-primary:focus-visible,
+button[data-variant="default"]:focus-visible,
+[data-state="checked"]:focus-visible,
+.btn-primary:focus-visible {
+  background-color: #14b8a6; /* teal-500 */
+  outline: 3px solid rgba(15, 118, 110, 0.3); /* teal-700 with opacity */
 }
