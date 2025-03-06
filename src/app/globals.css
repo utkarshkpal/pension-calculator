@@ -118,7 +118,7 @@ button[data-variant="default"],
 button[data-variant="default"]:hover,
 [data-state="checked"]:hover,
 .btn-primary:hover {
-  background-color: #14b8a6 !important; /* teal-500 - lighter shade */
+  background-color: #14b8a6;
 }
 
 /* Add hover styles for dropdown items and other interactive elements */
