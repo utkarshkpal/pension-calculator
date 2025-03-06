@@ -85,12 +85,6 @@ body {
   background-color: var(--accent);
 }
 
-/* Custom hover effects for primary buttons */
-.btn-primary:hover,
-.btn-primary:focus-visible {
-  background-color: #14b8a6; /* teal-500 */
-}
-
 /* Add a subtle teal background to selected items */
 .selected-teal {
   background-color: rgba(15, 118, 110, 0.1); /* teal-700 with opacity */
@@ -105,20 +99,22 @@ button[data-variant="default"],
   color: white;
 }
 
+/* Hover styles for primary elements */
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.bg-primary:hover,
+button[data-variant="default"]:hover,
+[data-state="checked"]:hover {
+  background-color: #14b8a6; /* teal-500 - lighter shade */
+}
+
+/* Text and border colors */
 .text-primary {
   color: #0f766e;
 }
 
 .border-primary {
   border-color: #0f766e;
-}
-
-/* Add hover styles for UI components */
-.bg-primary:hover,
-button[data-variant="default"]:hover,
-[data-state="checked"]:hover,
-.btn-primary:hover {
-  background-color: #14b8a6;
 }
 
 /* Add hover styles for dropdown items and other interactive elements */
